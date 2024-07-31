@@ -1,0 +1,54 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.bg-light {
+  background-color: #f8f9fa !important;
+}
+
+.card {
+  border-radius: 8px;
+}
+
+.card h1 {
+  font-size: 24px;
+}
+
+.input-group-text {
+  background-color: #e9ecef;
+  border-color: #ced4da;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+.text-primary {
+  color: #007bff !important;
+}
+
+.text-primary:hover {
+  color: #0056b3 !important;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.min-vh-100 {
+  min-height: 100vh;
+}
