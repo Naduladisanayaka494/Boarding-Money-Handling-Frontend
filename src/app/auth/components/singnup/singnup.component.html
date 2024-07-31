@@ -1,1 +1,41 @@
-<p>singnup works!</p>
+<div class="bg">
+  <div class="parent">
+    <div class="child">
+      <div class="imgDiv text-center">
+        <h1>Sign Up</h1>
+      </div>
+      <form id="signupForm" novalidate>
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" class="form-control" id="email" placeholder="E-mail" required>
+          <div class="invalid-feedback">
+            The input is not a valid E-mail.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+          <div class="invalid-feedback">
+            Password should contain 8 characters, 1 lowercase, 1 uppercase, 1 number, and a special character.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="checkPassword">Confirm Password</label>
+          <input type="password" class="form-control" id="checkPassword" placeholder="Confirm Password" required>
+          <div class="invalid-feedback">
+            Please confirm your Password.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="userName">Name</label>
+          <input type="text" class="form-control" id="userName" placeholder="Name" required>
+          <div class="invalid-feedback">
+            Please input your username!
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary login-form-margin mt-3">Register</button>
+        or <a href="/login">login Now!</a>
+      </form>
+    </div>
+  </div>
+</div>
