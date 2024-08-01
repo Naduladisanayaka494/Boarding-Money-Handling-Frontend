@@ -1,2 +1,70 @@
+<div *ngIf="!isAdminLoggedIn && !isStudentLoggedIn ">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/login">Boarding Money Manegement</a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/register" routerLinkActive="active">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div *ngIf="isAdminLoggedIn">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/login">LoggedIn Admin</a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/admin/car" routerLinkActive="active">Add Car</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/admin/bookings" routerLinkActive="active">Bookings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/admin/search" routerLinkActive="active">Search car</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="logout()" routerLinkActive="active">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div *ngIf="isStudentLoggedIn ">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/login">CustomerLogged In</a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/customer/dashboard" routerLinkActive="active">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/customer/my_bookings" routerLinkActive="active">My Bookings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/customer/search" routerLinkActive="active">Search Car</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="logout()" routerLinkActive="active">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
 
 <router-outlet></router-outlet>

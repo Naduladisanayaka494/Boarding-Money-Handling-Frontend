@@ -6,6 +6,7 @@ import { LoginComponent } from './auth/components/login/login.component';
 import { SingnupComponent } from './auth/components/singnup/singnup.component'; // Corrected typo
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'; // Added FormsModule
 import { HttpClientModule } from '@angular/common/http';
+// import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, SingnupComponent], // Corrected typo
@@ -15,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     FormsModule, // Added FormsModule
     HttpClientModule,
+    // NgxSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

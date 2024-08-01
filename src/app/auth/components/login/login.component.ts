@@ -36,8 +36,15 @@ export class LoginComponent implements OnInit {
             role: res.userRole,
           };
              StorageService.saveUser(user);
-             StorageService.saveToken(res.jwt);
-    
+          StorageService.saveToken(res.jwt);
+          if (StorageService.isAdminLoggedIn()) {
+            this.router.navigateByUrl('admin/dashboard');
+          } else if (StorageService.isStudentLoggedIn()) {
+            this.router.navigateByUrl('student/dashboard');
+          } else {
+
+          }
+
         }
       });
     }

@@ -46,12 +46,12 @@ export class StorageService {
     }
   }
 
-  static isCustomerLoggedIn(): boolean {
+  static isStudentLoggedIn(): boolean {
     if (StorageService.getToken() == null) {
       return false;
     } else {
       const role: string = StorageService.getUserRole();
-      return role === 'CUSTOMER';
+      return role === 'STUDENT';
     }
   }
 
