@@ -39,7 +39,7 @@ export class AddMoneyComponent implements OnInit {
       description: this.description,
     };
 
-    this.loading = true; // Show spinner
+    this.loading = true; 
     this.adminService
       .addMoney(MoneyRequest)
       .subscribe(
@@ -54,7 +54,7 @@ export class AddMoneyComponent implements OnInit {
         }
       )
       .add(() => {
-        this.loading = false; // Hide spinner
+        this.loading = false;
       });
   }
 
