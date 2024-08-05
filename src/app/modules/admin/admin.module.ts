@@ -6,11 +6,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddMoneyComponent } from './add-money/add-money.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { FormsModule } from '@angular/forms';
+import { SepndMoneyComponent } from './sepnd-money/sepnd-money.component';
 
 
 
 @NgModule({
-  declarations: [DashboardComponent, AddMoneyComponent, TransactionsComponent],
+  declarations: [DashboardComponent, AddMoneyComponent, TransactionsComponent, SepndMoneyComponent],
   imports: [CommonModule, AdminRoutingModule, FormsModule],
 })
 export class AdminModule {}

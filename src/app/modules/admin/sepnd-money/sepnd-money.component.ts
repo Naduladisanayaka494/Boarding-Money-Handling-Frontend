@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/services/admin/admin.service';
 
+
 interface User {
   id: number;
   name: string;
 }
-
 @Component({
-  selector: 'app-add-money',
-  templateUrl: './add-money.component.html',
-  styleUrls: ['./add-money.component.scss'],
+  selector: 'app-sepnd-money',
+  templateUrl: './sepnd-money.component.html',
+  styleUrls: ['./sepnd-money.component.scss'],
 })
-export class AddMoneyComponent implements OnInit {
+export class SepndMoneyComponent implements OnInit {
   users: User[] = [];
   selectedUserId!: number;
   amount!: number;
@@ -59,30 +59,29 @@ export class AddMoneyComponent implements OnInit {
   }
 
   spendMoney() {
-     const MoneyRequest = {
-       userId: this.selectedUserId,
-       amount: this.amount,
-       description: this.description,
-     };
+    const MoneyRequest = {
+      userId: this.selectedUserId,
+      amount: this.amount,
+      description: this.description,
+    };
 
-     this.loading = true;
-     this.adminService
-       .spendMoney(MoneyRequest)
-       .subscribe(
-         (res: any) => {
-           this.successMessage = 'Money spend record added successfully!';
-           this.errorMessage = '';
-           this.resetForm();
-         },
-         (error) => {
-           this.errorMessage = 'Failed to spend money. Please try again.';
-           this.successMessage = '';
-         }
-       )
-       .add(() => {
-         this.loading = false;
-       });
-
+    this.loading = true;
+    this.adminService
+      .spendMoney(MoneyRequest)
+      .subscribe(
+        (res: any) => {
+          this.successMessage = 'Money spend record added successfully!';
+          this.errorMessage = '';
+          this.resetForm();
+        },
+        (error) => {
+          this.errorMessage = 'Failed to spend money. Please try again.';
+          this.successMessage = '';
+        }
+      )
+      .add(() => {
+        this.loading = false;
+      });
   }
 
   resetForm() {
