@@ -26,13 +26,10 @@
             <a class="nav-link" routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/admin/car" routerLinkActive="active">Add Car</a>
+            <a class="nav-link" routerLink="/admin/add-money" routerLinkActive="active">Add Money</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/admin/bookings" routerLinkActive="active">Bookings</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/admin/search" routerLinkActive="active">Search car</a>
+              <li class="nav-item">
+            <a class="nav-link" routerLink="/admin/transactions" routerLinkActive="active">Transactions</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" (click)="logout()" routerLinkActive="active">Logout</a>
@@ -46,7 +43,7 @@
 <div *ngIf="isStudentLoggedIn ">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" routerLink="/login">CustomerLogged In</a>
+      <a class="navbar-brand" routerLink="/login">Student Logged In</a>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
