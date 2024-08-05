@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/services/admin/admin.service';
 
-// Define the User interface
 interface User {
   id: number;
   name: string;
@@ -13,12 +12,13 @@ interface User {
   styleUrls: ['./add-money.component.scss'],
 })
 export class AddMoneyComponent implements OnInit {
-  users: User[] = []; // Update the type of users
+  users: User[] = [];
   selectedUserId!: number;
   amount!: number;
   description!: string;
   successMessage!: string;
   errorMessage!: string;
+  loading: boolean = false;
 
   constructor(private adminService: AdminService) {}
 
@@ -29,7 +29,6 @@ export class AddMoneyComponent implements OnInit {
   fetchUsers() {
     this.adminService.getAllStudents().subscribe((res: User[]) => {
       this.users = res;
-      console.log(res);
     });
   }
 
@@ -40,9 +39,23 @@ export class AddMoneyComponent implements OnInit {
       description: this.description,
     };
 
-    this.adminService.addMoney(MoneyRequest).subscribe((res: any) => {
-      this.resetForm();
-    });
+    this.loading = true; // Show spinner
+    this.adminService
+      .addMoney(MoneyRequest)
+      .subscribe(
+        (res: any) => {
+          this.successMessage = 'Money added successfully!';
+          this.errorMessage = '';
+          this.resetForm();
+        },
+        (error) => {
+          this.errorMessage = 'Failed to add money. Please try again.';
+          this.successMessage = '';
+        }
+      )
+      .add(() => {
+        this.loading = false; // Hide spinner
+      });
   }
 
   resetForm() {
