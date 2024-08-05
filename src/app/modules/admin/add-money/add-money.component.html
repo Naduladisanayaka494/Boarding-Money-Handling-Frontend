@@ -1,1 +1,25 @@
-<p>add-money works!</p>
+<div class="add-money-form container mt-5 p-4 shadow rounded">
+  <h2 class="text-center mb-4">Add Money</h2>
+  <form (ngSubmit)="addMoney()" class="needs-validation" novalidate>
+    <div class="form-group mb-3">
+      <label for="userId" class="form-label">User:</label>
+      <select id="userId" [(ngModel)]="selectedUserId" name="userId" class="form-select" required>
+        <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+      </select>
+      <div class="invalid-feedback">Please select a user.</div>
+    </div>
+    <div class="form-group mb-3">
+      <label for="amount" class="form-label">Amount:</label>
+      <input type="number" id="amount" [(ngModel)]="amount" name="amount" class="form-control" required>
+      <div class="invalid-feedback">Please enter an amount.</div>
+    </div>
+    <div class="form-group mb-3">
+      <label for="description" class="form-label">Description:</label>
+      <input type="text" id="description" [(ngModel)]="description" name="description" class="form-control" required>
+      <div class="invalid-feedback">Please enter a description.</div>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Add Money</button>
+  </form>
+  <div *ngIf="successMessage" class="alert alert-success mt-3">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+</div>
