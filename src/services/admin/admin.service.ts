@@ -29,6 +29,12 @@ export class AdminService {
     });
   }
 
+  getAllTransactions(): Observable<any> {
+    return this.http.get(BASE_URL + '/api/money/all-transactions', {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
   createAuthorizationHeader(): HttpHeaders {
     let authHeader: HttpHeaders = new HttpHeaders();
     return authHeader.set(

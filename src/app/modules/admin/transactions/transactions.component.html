@@ -1,1 +1,66 @@
-<p>transactions works!</p>
+<div class="container mt-5">
+  <h2 class="text-center">Transactions</h2>
+
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <div class="card text-white bg-success mb-3">
+        <div class="card-header">Total Add Money</div>
+        <div class="card-body">
+          <h5 class="card-title">{{ totalAddMoney | currency }}</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card text-white bg-danger mb-3">
+        <div class="card-header">Total Spend Money</div>
+        <div class="card-body">
+          <h5 class="card-title">{{ totalSpendMoney | currency }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="text-center">Add Money Transactions</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>User</th>
+        <th>Amount</th>
+        <th>Description</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaction of addMoneyTransactions">
+        <td>{{ transaction.id }}</td>
+        <td>{{ transaction.user.name }}</td>
+        <td>{{ transaction.amount | currency }}</td>
+        <td>{{ transaction.description }}</td>
+        <td>{{ transaction.transactionDateTime | date: 'medium' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="text-center">Spend Money Transactions</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>User</th>
+        <th>Amount</th>
+        <th>Description</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaction of spendMoneyTransactions">
+        <td>{{ transaction.id }}</td>
+        <td>{{ transaction.user.name }}</td>
+        <td>{{ transaction.amount | currency }}</td>
+        <td>{{ transaction.description }}</td>
+        <td>{{ transaction.transactionDateTime | date: 'medium' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
