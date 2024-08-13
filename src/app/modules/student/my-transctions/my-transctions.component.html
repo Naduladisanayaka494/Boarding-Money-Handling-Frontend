@@ -3,14 +3,14 @@
 
   <!-- Filters -->
   <div class="row mb-4">
-    <!-- <div class="col-md-4">
+    <div class="col-md-4">
       <select class="form-control" [(ngModel)]="filterUser">
         <option value="">All Users</option>
         <option *ngFor="let student of students" [value]="student.name">
           {{ student.name }}
         </option>
       </select>
-    </div> -->
+    </div>
     <div class="col-md-4">
       <input type="date" class="form-control" [(ngModel)]="filterDate" />
     </div>
@@ -23,6 +23,8 @@
       </button>
     </div>
   </div>
+
+
 
   <div class="row mb-4">
     <div class="col-md-6">

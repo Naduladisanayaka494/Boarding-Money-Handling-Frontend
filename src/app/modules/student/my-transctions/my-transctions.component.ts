@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { StudentService } from 'src/services/student/student.service';
 import { AdminService } from 'src/services/admin/admin.service';
 import { jsPDF } from 'jspdf';
 
 @Component({
-  selector: 'app-transactions',
-  templateUrl: './transactions.component.html',
-  styleUrls: ['./transactions.component.scss'],
+  selector: 'app-my-transctions',
+  templateUrl: './my-transctions.component.html',
+  styleUrls: ['./my-transctions.component.scss'],
 })
-export class TransactionsComponent implements OnInit {
+export class MyTransctionsComponent implements OnInit {
   transactions: any[] = [];
   addMoneyTransactions: any[] = [];
   spendMoneyTransactions: any[] = [];
@@ -15,16 +16,18 @@ export class TransactionsComponent implements OnInit {
   filteredSpendMoneyTransactions: any[] = [];
   totalAddMoney: number = 0;
   totalSpendMoney: number = 0;
-
   filterUser: string = '';
   filterDate: string = '';
 
   students: any[] = []; // Array to store students
 
-  constructor(private adminService: AdminService) {}
+  constructor(
+    private studentService: StudentService,
+    private adminService: AdminService
+  ) {}
 
   ngOnInit(): void {
-    this.fetchStudents(); // Fetch students on component initialization
+    // this.fetchStudents(); // Fetch students on component initialization
     this.fetchTransactions();
   }
 
@@ -40,7 +43,7 @@ export class TransactionsComponent implements OnInit {
   }
 
   fetchTransactions(): void {
-    this.adminService.getAllTransactions().subscribe(
+    this.studentService.getMoneyTransactions().subscribe(
       (data) => {
         this.transactions = data;
         this.calculateSums();
