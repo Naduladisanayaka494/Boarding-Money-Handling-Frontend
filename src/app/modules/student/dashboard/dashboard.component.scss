@@ -1,0 +1,35 @@
+// dashboard.component.scss
+
+header {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #007bff;
+}
+
+p {
+  font-size: 1.1rem;
+  color: #6c757d;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.card {
+  border-radius: 8px;
+}
+
+.card-header {
+  background-color: #007bff;
+  border-bottom: none;
+  font-weight: bold;
+}
+
+.card-body {
+  font-size: 1.5rem;
+}

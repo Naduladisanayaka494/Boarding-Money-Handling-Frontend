@@ -1,1 +1,41 @@
-<p>dashboard works!</p>
+<div class="container mt-5">
+  <header class="text-center mb-4">
+    <h1>Dashboard</h1>
+    <p>Welcome to your transaction dashboard. Here you can see the latest transactions and your current balance.</p>
+  </header>
+
+  <!-- Recent Transactions and Balance -->
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="text-center">5 Most Recent Transactions</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>User</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transaction of recentTransactions">
+            <td>{{ transaction.id }}</td>
+            <td>{{ transaction.user.name }}</td>
+            <td>{{ transaction.amount | currency }}</td>
+            <td>{{ transaction.description }}</td>
+            <td>{{ transaction.transactionDateTime | date: 'medium' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-6">
+      <div class="card bg-info text-white mb-4">
+        <div class="card-header">Current Balance</div>
+        <div class="card-body text-center">
+          <h2>{{ currentBalance | currency }}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
