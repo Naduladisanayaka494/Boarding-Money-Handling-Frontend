@@ -3,14 +3,14 @@
 
   <!-- Filters -->
   <div class="row mb-4">
-    <div class="col-md-4">
+    <!-- <div class="col-md-4">
       <select class="form-control" [(ngModel)]="filterUser">
         <option value="">All Users</option>
         <option *ngFor="let student of students" [value]="student.name">
           {{ student.name }}
         </option>
       </select>
-    </div>
+    </div> -->
     <div class="col-md-4">
       <input type="date" class="form-control" [(ngModel)]="filterDate" />
     </div>
@@ -23,8 +23,6 @@
       </button>
     </div>
   </div>
-
-
 
   <div class="row mb-4">
     <div class="col-md-6">
@@ -45,8 +43,11 @@
     </div>
   </div>
 
-  <h3 class="text-center">Add Money Transactions</h3>
-  <table class="table table-striped">
+  <!-- Add Money Transactions Table -->
+  <h3 *ngIf="filteredAddMoneyTransactions.length > 0" class="text-center">
+    Add Money Transactions
+  </h3>
+  <table *ngIf="filteredAddMoneyTransactions.length > 0" class="table table-striped">
     <thead>
       <tr>
         <th>ID</th>
@@ -68,8 +69,10 @@
   </table>
 
   <!-- Spend Money Transactions Table -->
-  <h3 class="text-center">Spend Money Transactions</h3>
-  <table class="table table-striped">
+  <h3 *ngIf="filteredSpendMoneyTransactions.length > 0" class="text-center">
+    Spend Money Transactions
+  </h3>
+  <table *ngIf="filteredSpendMoneyTransactions.length > 0" class="table table-striped">
     <thead>
       <tr>
         <th>ID</th>
