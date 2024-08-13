@@ -1,6 +1,29 @@
 <div class="container mt-5">
   <h2 class="text-center">Transactions</h2>
 
+  <!-- Filters -->
+  <div class="row mb-4">
+    <div class="col-md-4">
+      <select class="form-control" [(ngModel)]="filterUser">
+        <option value="">All Users</option>
+        <option *ngFor="let student of students" [value]="student.name">
+          {{ student.name }}
+        </option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <input type="date" class="form-control" [(ngModel)]="filterDate" />
+    </div>
+    <div class="col-md-4 text-right">
+      <button class="btn btn-primary mx-2" (click)="applyFilters()">
+        Filter
+      </button>
+      <button class="btn btn-primary" (click)="downloadAsPDF()">
+        Download as PDF
+      </button>
+    </div>
+  </div>
+
   <div class="row mb-4">
     <div class="col-md-6">
       <div class="card text-white bg-success mb-3">
@@ -32,7 +55,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let transaction of addMoneyTransactions">
+      <tr *ngFor="let transaction of filteredAddMoneyTransactions">
         <td>{{ transaction.id }}</td>
         <td>{{ transaction.user.name }}</td>
         <td>{{ transaction.amount | currency }}</td>
@@ -42,6 +65,7 @@
     </tbody>
   </table>
 
+  <!-- Spend Money Transactions Table -->
   <h3 class="text-center">Spend Money Transactions</h3>
   <table class="table table-striped">
     <thead>
@@ -54,7 +78,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let transaction of spendMoneyTransactions">
+      <tr *ngFor="let transaction of filteredSpendMoneyTransactions">
         <td>{{ transaction.id }}</td>
         <td>{{ transaction.user.name }}</td>
         <td>{{ transaction.amount | currency }}</td>
