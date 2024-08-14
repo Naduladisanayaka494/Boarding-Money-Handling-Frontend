@@ -71,7 +71,6 @@ export class TransactionsComponent implements OnInit {
       (transaction) => transaction.transactionType === 'SPEND_MONEY'
     );
   }
-
   applyFilters(): void {
     this.filteredAddMoneyTransactions = this.addMoneyTransactions.filter(
       (transaction) =>
@@ -87,11 +86,16 @@ export class TransactionsComponent implements OnInit {
           transaction.transactionDateTime.startsWith(this.filterDate))
     );
 
-    // If no filters are applied, show all transactions
-    if (!this.filterUser && !this.filterDate) {
-      this.filteredAddMoneyTransactions = this.addMoneyTransactions;
-      this.filteredSpendMoneyTransactions = this.spendMoneyTransactions;
-    }
+    // Calculate the total Add Money, Spend Money, and current Credit for filtered transactions
+    this.totalAddMoney = this.filteredAddMoneyTransactions.reduce(
+      (sum, transaction) => sum + transaction.amount,
+      0
+    );
+
+    this.totalSpendMoney = this.filteredSpendMoneyTransactions.reduce(
+      (sum, transaction) => sum + transaction.amount,
+      0
+    );
   }
   downloadAsPDF(): void {
     const doc = new jsPDF('landscape'); // Switch to landscape for better column spacing
@@ -162,7 +166,7 @@ export class TransactionsComponent implements OnInit {
       addPageIfNeeded();
     });
 
-    // Display the total Add Money amount and transaction count
+    // Display the total Add Money amount and transaction count for filtered transactions
     startY += 5;
     addPageIfNeeded();
     doc.setFontSize(12);
@@ -216,7 +220,7 @@ export class TransactionsComponent implements OnInit {
       addPageIfNeeded();
     });
 
-    // Display the total Spend Money amount and transaction count
+    // Display the total Spend Money amount and transaction count for filtered transactions
     startY += 5;
     addPageIfNeeded();
     doc.setFontSize(12);
