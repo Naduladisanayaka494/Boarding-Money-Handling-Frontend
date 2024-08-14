@@ -17,4 +17,8 @@ export class AuthService {
   login(loginRequest: any): Observable<any> {
     return this.http.post(BASE_URL + '/api/auth/login', loginRequest);
   }
+
+  getAllUsers(): Observable<any> {
+    return this.http.get(BASE_URL + '/api/auth/users');
+  }
 }
