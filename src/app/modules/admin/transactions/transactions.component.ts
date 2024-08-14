@@ -86,7 +86,7 @@ export class TransactionsComponent implements OnInit {
           transaction.transactionDateTime.startsWith(this.filterDate))
     );
 
-    // Calculate the total Add Money, Spend Money, and current Credit for filtered transactions
+
     this.totalAddMoney = this.filteredAddMoneyTransactions.reduce(
       (sum, transaction) => sum + transaction.amount,
       0
@@ -98,9 +98,9 @@ export class TransactionsComponent implements OnInit {
     );
   }
   downloadAsPDF(): void {
-    const doc = new jsPDF('landscape'); // Switch to landscape for better column spacing
+    const doc = new jsPDF('landscape');
     let startY = 20;
-    const lineHeight = 10; // Height of each line of text
+    const lineHeight = 10;
 
     const addPageIfNeeded = () => {
       if (startY + lineHeight > doc.internal.pageSize.getHeight() - 20) {
