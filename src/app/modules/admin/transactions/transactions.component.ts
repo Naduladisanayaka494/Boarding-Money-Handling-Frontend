@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/services/admin/admin.service';
 import { jsPDF } from 'jspdf';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-transactions',
@@ -21,7 +22,7 @@ export class TransactionsComponent implements OnInit {
 
   students: any[] = []; // Array to store students
 
-  constructor(private adminService: AdminService) {}
+  constructor(private adminService: AdminService, private router: Router) {}
 
   ngOnInit(): void {
     this.fetchStudents(); // Fetch students on component initialization
@@ -85,7 +86,6 @@ export class TransactionsComponent implements OnInit {
         (!this.filterDate ||
           transaction.transactionDateTime.startsWith(this.filterDate))
     );
-
 
     this.totalAddMoney = this.filteredAddMoneyTransactions.reduce(
       (sum, transaction) => sum + transaction.amount,
@@ -256,5 +256,9 @@ export class TransactionsComponent implements OnInit {
 
     // Save the PDF
     doc.save('transactions.pdf');
+  }
+
+  editTransaction(transactionId: number) {
+    this.router.navigate(['/admin/edit-transaction', transactionId]);
   }
 }

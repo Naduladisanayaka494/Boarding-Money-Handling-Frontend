@@ -55,6 +55,7 @@
         <th>Amount</th>
         <th>Description</th>
         <th>Date</th>
+        <th>Actions</th> <!-- New column for actions -->
       </tr>
     </thead>
     <tbody>
@@ -64,6 +65,11 @@
         <td>{{ transaction.amount | currency }}</td>
         <td>{{ transaction.description }}</td>
         <td>{{ transaction.transactionDateTime | date: 'medium' }}</td>
+        <td>
+          <button class="btn btn-warning" (click)="editTransaction(transaction.id)">
+            Edit
+          </button>
+        </td> <!-- New button for editing -->
       </tr>
     </tbody>
   </table>
@@ -80,6 +86,7 @@
         <th>Amount</th>
         <th>Description</th>
         <th>Date</th>
+        <th>Actions</th> <!-- New column for actions -->
       </tr>
     </thead>
     <tbody>
@@ -89,6 +96,11 @@
         <td>{{ transaction.amount | currency }}</td>
         <td>{{ transaction.description }}</td>
         <td>{{ transaction.transactionDateTime | date: 'medium' }}</td>
+        <td>
+          <button class="btn btn-warning" (click)="editTransaction(transaction.id)">
+            Edit
+          </button>
+        </td> <!-- New button for editing -->
       </tr>
     </tbody>
   </table>

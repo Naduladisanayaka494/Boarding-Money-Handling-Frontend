@@ -8,11 +8,12 @@ import { TransactionsComponent } from './transactions/transactions.component';
 import { FormsModule } from '@angular/forms';
 import { SepndMoneyComponent } from './sepnd-money/sepnd-money.component';
 import { CurrentMoneyComponent } from './current-money/current-money.component';
+import { EditTransactionComponent } from './edit-transaction/edit-transaction.component';
 
 
 
 @NgModule({
-  declarations: [DashboardComponent, AddMoneyComponent, TransactionsComponent, SepndMoneyComponent, CurrentMoneyComponent],
+  declarations: [DashboardComponent, AddMoneyComponent, TransactionsComponent, SepndMoneyComponent, CurrentMoneyComponent, EditTransactionComponent],
   imports: [CommonModule, AdminRoutingModule, FormsModule],
 })
 export class AdminModule {}
