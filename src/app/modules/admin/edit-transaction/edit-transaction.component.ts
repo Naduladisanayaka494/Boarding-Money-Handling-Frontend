@@ -41,15 +41,15 @@ export class EditTransactionComponent implements OnInit {
     this.adminService.getMoneyTransactions(transactionId).subscribe(
       (data) => {
 
-        this.selectedUserId = data.userId;
+        this.selectedUserId = data.user.id;
         this.amount = data.amount;
         this.description = data.description;
-        this.transactionType = data.transactionType; // Load transaction type
+        this.transactionType = data.transactionType; 
 
-        console.log(data); // Log the data to the console
+        console.log("hi",data);
       },
       (error) => {
-        // Error callback: this block runs if there's an error
+
         this.errorMessage = 'Error loading transaction details.';
       }
     );
