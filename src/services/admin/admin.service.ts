@@ -35,7 +35,6 @@ export class AdminService {
     });
   }
 
-  // New method to call the updateTransaction API
   updateTransaction(
     transactionId: number,
     MoneyUpdateRequest: any

@@ -1,1 +1,43 @@
-<p>edit-transaction works!</p>
+<div *ngIf="successMessage" class="alert alert-success mt-3">{{ successMessage }}</div>
+<div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+
+<div class="edit-transaction-form container mt-5 p-4 shadow-lg rounded bg-light">
+  <h2 class="text-center mb-4 text-primary">Edit Transaction</h2>
+  <form (ngSubmit)="updateTransaction()" class="needs-validation" novalidate>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="userId" class="form-label">User:</label>
+        <select id="userId" [(ngModel)]="selectedUserId" name="userId" class="form-select" required>
+          <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+        </select>
+        <div class="invalid-feedback">Please select a user.</div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="amount" class="form-label">Amount:</label>
+        <input type="number" id="amount" [(ngModel)]="amount" name="amount" class="form-control" required>
+        <div class="invalid-feedback">Please enter an amount.</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description:</label>
+      <input type="text" id="description" [(ngModel)]="description" name="description" class="form-control" required>
+      <div class="invalid-feedback">Please enter a description.</div>
+    </div>
+
+    <div class="mb-4">
+      <label for="transactionType" class="form-label">Transaction Type:</label>
+      <select id="transactionType" [(ngModel)]="transactionType" name="transactionType" class="form-select" required>
+        <option value="ADD_MONEY">Add Money</option>
+        <option value="SPEND_MONEY">Spend Money</option>
+      </select>
+      <div class="invalid-feedback">Please select a transaction type.</div>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100 d-flex align-items-center justify-content-center" [disabled]="loading">
+      <span>Update Transaction</span>
+      <span *ngIf="loading" class="spinner-border spinner-border-sm ms-2" role="status" aria-hidden="true"></span>
+    </button>
+  </form>
+</div>
