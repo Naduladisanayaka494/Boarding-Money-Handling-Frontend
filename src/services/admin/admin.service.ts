@@ -35,6 +35,30 @@ export class AdminService {
     });
   }
 
+  // New method to call the updateTransaction API
+  updateTransaction(
+    transactionId: number,
+    MoneyUpdateRequest: any
+  ): Observable<any> {
+    return this.http.put(
+      BASE_URL + `/api/money/update/${transactionId}`,
+      MoneyUpdateRequest,
+      {
+        headers: this.createAuthorizationHeader(),
+      }
+    );
+  }
+
+  // New method to call the getMoneyTransactions API
+  getMoneyTransactions(userId: number): Observable<any> {
+    return this.http.get(
+      BASE_URL + `/api/money/transactions?userId=${userId}`,
+      {
+        headers: this.createAuthorizationHeader(),
+      }
+    );
+  }
+
   createAuthorizationHeader(): HttpHeaders {
     let authHeader: HttpHeaders = new HttpHeaders();
     return authHeader.set(
