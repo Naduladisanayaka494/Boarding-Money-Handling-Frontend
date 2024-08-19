@@ -50,8 +50,14 @@ export class AdminService {
 
   // New method to call the getMoneyTransactions API
   getMoneyTransactions(transactionId: number): Observable<any> {
-    return this.http.get(
-      BASE_URL + `/api/money/transaction/${transactionId}`,
+    return this.http.get(BASE_URL + `/api/money/transaction/${transactionId}`, {
+      headers: this.createAuthorizationHeader(),
+    });
+  }
+
+  deleteTransaction(transactionId: number): Observable<any> {
+    return this.http.delete(
+      BASE_URL + `/api/money/delete/${transactionId}`, 
       {
         headers: this.createAuthorizationHeader(),
       }

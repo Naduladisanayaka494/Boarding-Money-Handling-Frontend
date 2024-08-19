@@ -47,7 +47,10 @@
   <h3 *ngIf="filteredAddMoneyTransactions.length > 0" class="text-center">
     Add Money Transactions
   </h3>
-  <table *ngIf="filteredAddMoneyTransactions.length > 0" class="table table-striped">
+  <table
+    *ngIf="filteredAddMoneyTransactions.length > 0"
+    class="table table-striped"
+  >
     <thead>
       <tr>
         <th>ID</th>
@@ -55,7 +58,8 @@
         <th>Amount</th>
         <th>Description</th>
         <th>Date</th>
-        <th>Actions</th> <!-- New column for actions -->
+        <th>Actions</th>
+        <!-- New column for actions -->
       </tr>
     </thead>
     <tbody>
@@ -64,12 +68,23 @@
         <td>{{ transaction.user.name }}</td>
         <td>{{ transaction.amount | currency }}</td>
         <td>{{ transaction.description }}</td>
-        <td>{{ transaction.transactionDateTime | date: 'medium' }}</td>
-        <td>
-          <button class="btn btn-warning" (click)="editTransaction(transaction.id)">
-            Edit
-          </button>
-        </td> <!-- New button for editing -->
+        <td>{{ transaction.transactionDateTime | date : "medium" }}</td>
+     <td>
+  <button
+    class="btn btn-warning me-2"
+    (click)="editTransaction(transaction.id)"
+  >
+    Edit
+  </button>
+  <button
+    class="btn btn-danger"
+    (click)="deleteTransaction(transaction.id)"
+  >
+    Delete
+  </button>
+</td>
+
+        <!-- New button for editing -->
       </tr>
     </tbody>
   </table>
@@ -78,7 +93,10 @@
   <h3 *ngIf="filteredSpendMoneyTransactions.length > 0" class="text-center">
     Spend Money Transactions
   </h3>
-  <table *ngIf="filteredSpendMoneyTransactions.length > 0" class="table table-striped">
+  <table
+    *ngIf="filteredSpendMoneyTransactions.length > 0"
+    class="table table-striped"
+  >
     <thead>
       <tr>
         <th>ID</th>
@@ -86,7 +104,8 @@
         <th>Amount</th>
         <th>Description</th>
         <th>Date</th>
-        <th>Actions</th> <!-- New column for actions -->
+        <th>Actions</th>
+        <!-- New column for actions -->
       </tr>
     </thead>
     <tbody>
@@ -95,12 +114,22 @@
         <td>{{ transaction.user.name }}</td>
         <td>{{ transaction.amount | currency }}</td>
         <td>{{ transaction.description }}</td>
-        <td>{{ transaction.transactionDateTime | date: 'medium' }}</td>
-        <td>
-          <button class="btn btn-warning" (click)="editTransaction(transaction.id)">
-            Edit
-          </button>
-        </td> <!-- New button for editing -->
+        <td>{{ transaction.transactionDateTime | date : "medium" }}</td>
+     <td>
+  <button
+    class="btn btn-warning me-2"
+    (click)="editTransaction(transaction.id)"
+  >
+    Edit
+  </button>
+  <button
+    class="btn btn-danger"
+    (click)="deleteTransaction(transaction.id)"
+  >
+    Delete
+  </button>
+</td>
+
       </tr>
     </tbody>
   </table>

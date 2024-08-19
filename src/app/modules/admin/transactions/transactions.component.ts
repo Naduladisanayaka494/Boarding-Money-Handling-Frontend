@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/services/admin/admin.service';
 import { jsPDF } from 'jspdf';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-transactions',
@@ -260,5 +261,38 @@ export class TransactionsComponent implements OnInit {
 
   editTransaction(transactionId: number) {
     this.router.navigate(['/admin/edit-transaction', transactionId]);
+  }
+
+  deleteTransaction(transactionId: number): void {
+    // Show a confirmation dialog before deleting
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.adminService.deleteTransaction(transactionId).subscribe(
+          (response) => {
+            Swal.fire(
+              'Deleted!',
+              'Your transaction has been deleted.',
+              'success'
+            );
+            this.fetchTransactions(); // Refresh the transactions list after deletion
+          },
+          (error) => {
+            Swal.fire(
+              'Error!',
+              'There was an error deleting the transaction.',
+              'error'
+            );
+            console.error('Error deleting transaction', error);
+          }
+        );
+      }
+    });
   }
 }
